@@ -77,12 +77,21 @@
     .hidden-message {
       display: none;
       margin-top: 15px;
-      animation: fadeIn 2s;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    /* TYPING EFFECT */
+    #typing-text {
+      font-size: 15px;
+      line-height: 1.6;
+      border-right: 2px solid white;
+      white-space: pre-line;
+      overflow: hidden;
+      display: inline-block;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
 
     /* BALON */
@@ -139,13 +148,7 @@
     <button onclick="showMessage()">Klik Pesan Spesial 💌</button>
 
     <div class="hidden-message" id="message">
-      Di hari spesial ini, aku ingin kamu tahu betapa berharganya kamu dalam hidupku 💖
-      <br><br>
-      Kamu adalah alasan aku tersenyum setiap hari, dan aku bersyukur memilikimu 🤍
-      <br><br>
-      Semoga semua impianmu tercapai, dan aku bisa selalu ada di setiap langkahmu ❤️
-      <br><br>
-      I love you, today and forever 💕
+      <p id="typing-text"></p>
     </div>
   </div>
 
@@ -153,8 +156,36 @@
     function showMessage() {
       document.getElementById('message').style.display = 'block';
 
+      // musik nyala
       let audio = document.getElementById("bg-music");
       audio.play();
+
+      // teks romantis typing
+      let text = `Di hari spesial ini, aku ingin kamu tahu 💖
+
+Kamu adalah alasan aku tersenyum setiap hari 😊
+Dan aku sangat bersyukur memiliki kamu 🤍
+
+Semoga semua impianmu tercapai ✨
+Dan aku bisa selalu ada di setiap langkahmu ❤️
+
+I love you, today and forever 💕`;
+
+      let i = 0;
+      let speed = 50;
+      let target = document.getElementById("typing-text");
+
+      target.innerHTML = "";
+
+      function typeWriter() {
+        if (i < text.length) {
+          target.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      typeWriter();
     }
   </script>
 
