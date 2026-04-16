@@ -105,16 +105,22 @@
 <body>
 
   <!-- MUSIK -->
-<audio id="bg-music" loop>
+<audio id="bg-music" autoplay loop muted>
   <source src="MUSIK.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="playMusic()">Putar Musik 🎵</button>
-
 <script>
-document.addEventListener("click", function() {
-  document.getElementById("bg-music").play();
-}, { once: true });
+window.addEventListener("load", function() {
+  let audio = document.getElementById("bg-music");
+  
+  // paksa play saat load
+  audio.play().then(() => {
+    // setelah berhasil, aktifkan suara
+    audio.muted = false;
+  }).catch(() => {
+    console.log("Autoplay diblok browser");
+  });
+});
 </script>
 
   <!-- BALON -->
