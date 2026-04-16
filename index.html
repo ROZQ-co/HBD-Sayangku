@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selamat Ulang Tahun ❤️</title>
+
   <style>
     body {
       margin: 0;
@@ -19,7 +20,7 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.2);
       padding: 20px;
       border-radius: 20px;
       backdrop-filter: blur(10px);
@@ -32,7 +33,6 @@
 
     /* SLIDER */
     .slider {
-      position: relative;
       width: 100%;
       height: 220px;
       overflow: hidden;
@@ -53,22 +53,14 @@
     }
 
     @keyframes slide {
-      0% { margin-left: 0%; }
-      12% { margin-left: 0%; }
-      14% { margin-left: -100%; }
-      25% { margin-left: -100%; }
-      27% { margin-left: -200%; }
-      38% { margin-left: -200%; }
-      40% { margin-left: -300%; }
-      51% { margin-left: -300%; }
-      53% { margin-left: -400%; }
-      64% { margin-left: -400%; }
-      66% { margin-left: -500%; }
-      77% { margin-left: -500%; }
-      79% { margin-left: -600%; }
-      90% { margin-left: -600%; }
-      92% { margin-left: -700%; }
-      100% { margin-left: -700%; }
+      0%,12% { margin-left: 0%; }
+      14%,25% { margin-left: -100%; }
+      27%,38% { margin-left: -200%; }
+      40%,51% { margin-left: -300%; }
+      53%,64% { margin-left: -400%; }
+      66%,77% { margin-left: -500%; }
+      79%,90% { margin-left: -600%; }
+      92%,100% { margin-left: -700%; }
     }
 
     button {
@@ -79,11 +71,18 @@
       background: #ff6f91;
       color: white;
       cursor: pointer;
+      font-size: 14px;
     }
 
     .hidden-message {
       display: none;
-      margin-top: 10px;
+      margin-top: 15px;
+      animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
 
     /* BALON */
@@ -102,26 +101,13 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- MUSIK -->
-<audio id="bg-music" autoplay loop muted>
-  <source src="MUSIK.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-window.addEventListener("load", function() {
-  let audio = document.getElementById("bg-music");
-  
-  // paksa play saat load
-  audio.play().then(() => {
-    // setelah berhasil, aktifkan suara
-    audio.muted = false;
-  }).catch(() => {
-    console.log("Autoplay diblok browser");
-  });
-});
-</script>
+  <audio id="bg-music" loop>
+    <source src="MUSIK.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- BALON -->
   <div class="balloon" style="left:10%; background:#ff4d6d;"></div>
@@ -134,7 +120,7 @@ window.addEventListener("load", function() {
     <h1>Selamat Ulang Tahun 🎉</h1>
     <h2>RAGIL CAHYANING KUSUMA WARDANI ❤️</h2>
 
-    <!-- SLIDER FOTO 8 -->
+    <!-- SLIDER FOTO -->
     <div class="slider">
       <div class="slides">
         <img src="1.jpeg">
@@ -153,17 +139,22 @@ window.addEventListener("load", function() {
     <button onclick="showMessage()">Klik Pesan Spesial 💌</button>
 
     <div class="hidden-message" id="message">
-      Di hari spesial ini, aku ingin kamu tahu betapa berharganya kamu dalam hidupku. Kamu adalah alasan aku tersenyum setiap hari 💖
+      Di hari spesial ini, aku ingin kamu tahu betapa berharganya kamu dalam hidupku 💖
       <br><br>
-      Semoga semua impianmu tercapai dan kebahagiaan selalu menyertaimu 🤍
+      Kamu adalah alasan aku tersenyum setiap hari, dan aku bersyukur memilikimu 🤍
       <br><br>
-      Aku akan selalu ada untukmu, hari ini, besok, dan selamanya ❤️
+      Semoga semua impianmu tercapai, dan aku bisa selalu ada di setiap langkahmu ❤️
+      <br><br>
+      I love you, today and forever 💕
     </div>
   </div>
 
   <script>
     function showMessage() {
       document.getElementById('message').style.display = 'block';
+
+      let audio = document.getElementById("bg-music");
+      audio.play();
     }
   </script>
 
