@@ -112,9 +112,9 @@
 <button onclick="playMusic()">Putar Musik 🎵</button>
 
 <script>
-function playMusic() {
+document.addEventListener("click", function() {
   document.getElementById("bg-music").play();
-}
+}, { once: true });
 </script>
 
   <!-- BALON -->
