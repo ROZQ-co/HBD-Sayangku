@@ -105,9 +105,17 @@
 <body>
 
   <!-- MUSIK -->
-  <audio autoplay loop>
-    <source src="MUSIK.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bg-music" loop>
+  <source src="MUSIK.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()">Putar Musik 🎵</button>
+
+<script>
+function playMusic() {
+  document.getElementById("bg-music").play();
+}
+</script>
 
   <!-- BALON -->
   <div class="balloon" style="left:10%; background:#ff4d6d;"></div>
